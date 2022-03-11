@@ -1,10 +1,26 @@
 const ProductsModel = require('../models/products')
 
+//Método Get
 async function get(req, res) {
-    const products = await ProductsModel.find()
+    const { id } = req.params
+
+    let obj = {}
+
+    if (id) {
+        obj._id = id
+    }
+
+    const products = await ProductsModel.find(obj)
 
     res.send(products)
 }
+
+
+
+
+
+
+/**/
 
 module.exports = {
     get,
